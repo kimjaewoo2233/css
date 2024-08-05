@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            margin: 0;
+            height: 100vh;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(42, 22, 22);
+        }
+        .loader{
+            width: 4.3em;
+            height: 9.8em;
+            font-size: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: space-between;
+            animation: rotating 4s linear infinite;
+        }
+
+        @keyframes rotating{
+            0%,90%{
+                transform: rotate(0);
+            }
+            100%{
+                transform: rotate(0.5turn);
+            }
+        }
+
+        .loader::after {
+            content: '';
+            position: absolute;
+            width: 0.2em;
+            height: 4.8em;
+            background-color: deepskyblue;
+            top: 1em;
+            animation: flow 4s linear infinite;
+        }
+
+        @keyframes flow {
+            10%,100%{
+                transform: translateY(3.2em);
+            }
+        }
+
+        .top,
+        .bottom{
+            width: 3.9em;
+            height: 3.9em;
+            border-color: blue;
+            border-style: solid;
+            border-width: 0.2em 0.2em 0.2em 0.2em;
+            border-radius: 100% 100% 100% 30%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top{
+            transform: rotate(-45deg);
+        }
+
+        .bottom{
+            transform: rotate(135deg);
+        }
+
+        .top::before, .bottom::before {
+            content: "";
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            background-color: deepskyblue;
+            animation: 4s linear infinite;
+        }
+        .top::before{
+            border-radius: 0 100% 0 0;
+            animation-name: drop-stand;
+        }
+        @keyframes drop-stand {
+           to{
+             transform: translate(-2em, 2.5em);
+           }
+        }
+
+        .bottom::before {
+           border-radius: 0 0 0 35%;
+           transform: translate(2.5em, -2.5em);
+           animation-name: fill-stand;
+        }
+
+        @keyframes fill-stand {
+            to{
+                transform: translate(0,0);
+            }
+        }
+   </style>
+</head>
+<body>
+    <div class="loader">
+        <span class="top"></span>
+        <span class="bottom"></span>
+    </div>
+</body>
+</html>
