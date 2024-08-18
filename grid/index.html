@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Tailwind</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer>
+        const divArr = [
+          { name: "User 1", age: 25 },
+          { name: "User 2", age: 30 },
+          { name: "User 3", age: 22 },
+      ];
+    
+      const container = document.getElementById('test');
+      console.log(container);
+        divArr.forEach(user => {
+          const newDiv = document.createElement('div');
+          
+          newDiv.textContent = `Name: ${user.name}, \n Age: ${user.age}`;
+          
+          container.appendChild(newDiv);
+      });
+    </script>
+   
+</head>
+
+<body>
+    <div class="w-screen h-screen flex">
+        <div class="grid gap-5 grid-cols-7 grid-rows-10 h-full w-full h-[500px] bg-gray-500 grow" id="test">
+            <div class="col-start-1 col-end-8 row-start-1 row-end-2 bg-white">
+                header
+            </div>
+            <div class="bg-white row-start-2 row-end-11">
+                sidebar
+            </div>
+
+            <div class="bg-white row-start-2 row-end-11 col-start-2 col-end-8">
+                content
+            </div>
+        </div>
+    </div>
+</body>
+</html>
